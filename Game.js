@@ -43,17 +43,10 @@ class Game{
     }
     
     main(){
-        if(this.playerNumber === 1){
             this.player1.getPlayerChoice();
             this.player2.getPlayerChoice();
             this.gameMechanics();
-        }
-        else{
-            this.player1.getPlayerChoice();
-            this.player2.getPlayerChoice();
-            this.gameMechanics();
-        }
-     }
+    }
 
     namePlayers(){
         this.player1.setName(this.player1.name);
@@ -69,7 +62,7 @@ class Game{
 
     gameMechanics(){
         if(this.player1.gesture.name === this.player2.gesture.name){
-                console.log(`You both choose ${this.player1.gesture.name}, play again.`);
+                console.log(`\nYou both choose ${this.player1.gesture.name}, play again.\n`);
                 return this.main();
         }
         this.player1.gesture.comparerator(this.player2, this.player1);
