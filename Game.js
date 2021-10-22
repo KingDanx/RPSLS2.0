@@ -2,16 +2,18 @@
 const prompt = require("prompt-sync")();
 const {AI} = require("./AI");
 const {Human} = require("./Human");
+const {Player} = require("./Player");
 
 class Game{
     constructor(rounds){
         this.rounds = rounds;
         this.playerNumber;
         this.roundCounter = 1;
+        this.player = new Player("");
     }
 
     newGame(){
-        console.log(`\nWelcome to Rock, Paper, Scissors, Lizard, Spock! \nChoose game mode. Enter "1" for single player, "2" for multiplayer, or "3" to exit.`);
+        console.log(`\nWelcome to ${this.player.choice[0].name}, ${this.player.choice[1].name}, ${this.player.choice[2].name}, ${this.player.choice[3].name}, ${this.player.choice[4].name}! \nChoose game mode. Enter "1" for single player, "2" for multiplayer, or "3" to exit.`);
         let userInput = prompt();
         userInput = userInput.trim();
         switch (userInput) {
