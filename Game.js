@@ -66,37 +66,14 @@ class Game{
     }
 
     gameMechanics(){
-        if(this.player1.gesture === this.player2.gesture){
-                console.log(`You both choose ${this.player1.gesture}, play again.`);
+        if(this.player1.gesture.name === this.player2.gesture.name){
+                console.log(`You both choose ${this.player1.gesture.name}, play again.`);
                 return this.main();
         }
-        this.comparerator(`${this.player1.choice[1]}`, `${this.player1.choice[0]}`, `\nPaper covers Rock`);
-        this.comparerator(`${this.player1.choice[2]}`, `${this.player1.choice[1]}`, "\nScissors cuts Paper");
-        this.comparerator(`${this.player1.choice[0]}`, `${this.player1.choice[2]}`, "\nRock crushes Scissors");
-        this.comparerator(`${this.player1.choice[0]}`, `${this.player1.choice[3]}`, "\nRock crushes Lizard");
-        this.comparerator(`${this.player1.choice[3]}`, `${this.player1.choice[4]}`, "\nLizard poisons Spock");
-        this.comparerator(`${this.player1.choice[4]}`, `${this.player1.choice[2]}`, "\nSpock smashes Scissors");
-        this.comparerator(`${this.player1.choice[2]}`, `${this.player1.choice[3]}`, "\nScissors decapitates Lizard");
-        this.comparerator(`${this.player1.choice[3]}`, `${this.player1.choice[1]}`, "\nLizard eats Paper");
-        this.comparerator(`${this.player1.choice[1]}`, `${this.player1.choice[4]}`, "\nPaper disproves Spock");
-        this.comparerator(`${this.player1.choice[4]}`, `${this.player1.choice[0]}`, "\nSpock vaporizes Rock");
+        this.player1.gesture.comparerator(this.player2, this.player1);
+        this.player2.gesture.comparerator(this.player1, this.player2);
 
         this.roundCheck();
-    }
-
-    comparerator(winner, looser, string){
-        if((this.player1.gesture == winner || this.player1.gesture == looser) && (this.player2.gesture == winner || this.player2.gesture == looser)){
-            console.log(`\n${this.player1.name}: ${this.player1.gesture}\n${this.player2.name}: ${this.player2.gesture}`);
-            console.log(string);
-            if(this.player1.gesture == winner){
-                this.player1.points++;
-                console.log(`${this.player1.name} scores a point and has ${this.player1.points}\n`);
-            }
-            else if(this.player2.gesture == winner){
-                this.player2.points++;
-                console.log(`${this.player2.name} scores a point and has ${this.player2.points}\n`);
-            }
-        }
     }
 
     roundCheck(){
